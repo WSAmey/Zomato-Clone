@@ -1,0 +1,88 @@
+body {
+    min-height: 105vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.inputcheck{
+    margin-top: 2vh;
+}
+.checktxt{
+    margin-left: 5px;
+}
+.city{
+    padding: 2vh;
+}
+.container-fluid{
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}   
+#row1{
+    margin-right: 5px;
+}
+#logcol{
+    margin-top: 7px;
+    width: 4vw;
+
+}
+#accountcol{
+    margin-top: 5px;
+}
+.labelp1, .labelp2, .labelvp1,.labelvp2 {
+    margin-top: 2vh;
+}
+
+#loginbtn{
+    background: none;
+    border: none;
+    color: white;
+    margin-right: 20px;
+}
+
+#account{
+    background: none;
+    border: 1px solid white;
+    color: white;
+    border-radius: 4px;
+    padding: 4px;
+    margin-left: 10px;
+}
+
+
+.headpara{
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+.costp{
+    margin-left: 5px;
+}
+#h2{
+    font-size: xx-large;
+    font-weight: bolder;
+    text-align: center;
+}
+.inputradio{
+    margin-top: 2vh;
+}
+@media screen and (max-width: 1280px){
+    #h2{
+        font-size: xx-large;
+    }
+    
+}
+
+@media screen and (max-width: 767px){
+    #h2{
+        font-size: xx-large;
+    }
+}
+@media screen and (max-width: 480px){
+    #h2{
+        font-size: xx-large;
+    }
+    #maincontainer{
+        height: 72vh;
+    }
+}

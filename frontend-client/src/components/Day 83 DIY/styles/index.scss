@@ -1,0 +1,333 @@
+//index.scss is input file and index.css is output file
+
+@mixin card-size(){
+    width: 82%;
+    margin-left: auto;
+    margin-right: auto;
+}
+body{
+    padding: 0;
+    margin: 0;
+    background-color: whitesmoke;
+}
+.headerPa{
+    background-color: red;
+    height: 75px;
+}
+.header{
+
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+}
+
+.login{
+    color: white;
+    // height: 9vh;
+    margin-top: 20px
+}
+
+.logbtn{
+    background: red;
+    border: none;
+    color: white;
+}
+.accbtn{
+    background: red;
+    border: 2px solid white;
+    color: white;
+    border-radius: 7px;
+    padding: 10px;
+}
+.logo{
+    display: inline-block;
+    margin-left: 10vw;
+    margin-top: -17px;
+}
+
+.logop{
+    background: white;
+    border-radius: 50%;
+    color: red;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 34px;
+}
+
+.container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cardbox{
+    display: flex;
+}
+
+.filter{
+    color: darkblue;
+    display: inline-block;
+    width: 20vw;
+    height: 79vh;
+    box-shadow: rgba(74, 50, 114, 0.15) 3.95px 3.95px 14.6px;  
+    background-color: white
+}
+
+h3{
+    @include card-size();
+    // width: 82%;
+    // margin-left: auto;
+    // margin-right: auto;
+}
+.filterh3{
+    margin-bottom: -14px;
+}
+.searchbar{
+    @include card-size();
+
+    // width: 82%;
+    // margin-left: auto;
+    // margin-right: auto;
+}
+
+.loctxt{
+    margin-bottom: 1px;
+}
+.city{
+    
+    width: 97%;
+    height: 26px;
+    border-radius: 5px;
+}
+.cuisine{
+    display: flex;
+    flex-direction: column;
+    @include card-size();
+}
+.checkbox{
+    @include card-size();
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+}
+.ctxt{
+    margin-bottom: -9px;
+}
+.innercheckbox{
+margin-bottom: -27px;   
+}
+.inputcheck{
+    display: inline-block;
+}
+.checktxt{
+    display: inline-block;
+    
+}
+.costtxt{
+    margin-bottom: -9px;
+
+}
+.cost{
+    @include card-size();
+    margin-top: 30px;
+
+}
+.radio{
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+}
+.inputradio{
+    margin-bottom: -27px;   
+
+}
+.costradio{
+    display: inline-block;
+
+}
+.costp{
+    display: inline-block;
+}
+.sort{
+    @include card-size();
+    margin-top: 30px;
+}
+.sorttxt{
+    margin-bottom: -9px;
+}
+.cards{
+    width: 60vw;
+    margin-left: 25px;
+     height: 62vh;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-gap: 25px;
+}
+.card1{
+    box-shadow: rgba(74, 50, 114, 0.15) 3.95px 3.95px 14.6px;  
+    height: 30vh;
+    background-color: white;
+
+}
+.upperdiv{
+    height: 15vh;
+    display: flex;
+    margin-bottom: 10px;
+}
+img{
+    // display: inline-block;
+    height: 85px;
+    padding: 13px;
+    border-radius: 36px;
+}
+
+.desc{
+    // display: inline-block;
+}
+.para1{
+    margin-top: 26px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.para2{
+    margin-top: -22px;
+    font-weight: bolder;
+}
+.para3{
+    margin-top: -16px;
+    color: gray;
+    font-size: smaller;
+}
+hr{
+    @include card-size();
+    width: 96%;
+    border: 1px solid lightgray;
+}
+.bottomdiv{
+    display: flex;
+}
+.costlabel{
+    margin-left: 12px;
+    color: gray;
+}
+.costvalue{
+    margin-left: 20px;
+}
+.card2{
+    box-shadow: rgba(74, 50, 114, 0.15) 3.95px 3.95px 14.6px;  
+    height: 30vh;    
+    background-color: white;
+}
+.labelp1{
+    margin-bottom: -10px;
+}
+.labelvp1{
+    margin-bottom: -10px;
+}
+
+.navbtns{
+    display: flex;
+    // height: 30px;;
+    gap: 7px;
+    @include card-size();
+    width: 252px;
+
+}
+.navbtn{
+    width: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: whitesmoke;
+    height: 30px;
+    
+}
+.upperdropdown{
+    display: none;
+}
+#btn1{
+    background-color: lightslategrey;
+    color: white;
+}
+
+$tabmax: 992px;
+@media screen and (max-width: $tabmax) {
+    .filter{
+        display: none;
+    }
+    .cards{
+        margin-left: 0;
+        width: 100%;
+    }
+    .upperdropdown{
+        display: block;
+        box-shadow: rgba(74, 50, 114, 0.15) 3.95px 3.95px 14.6px;  
+
+    }
+    .uppersort{
+        width: 100%;
+        height: 46px;
+        padding: 14px;
+        border: none;
+        font-size: 17px;
+        font-weight: bolder;
+    }
+    .upperdiv{
+        margin-bottom: 10px;
+    }
+    .card1{
+        height: 27vh;
+    }
+    .card2{
+        height: 27vh;
+    }
+}
+
+$mobmax: 480px;
+@media screen and (max-width: $mobmax) {
+    .filter{
+        display: none;
+    }
+    .cards{
+        margin-left: 0;
+        width: 100%;
+    }
+    .upperdropdown{
+        display: block;
+        box-shadow: rgba(74, 50, 114, 0.15) 3.95px 3.95px 14.6px;  
+
+    }
+    .uppersort{
+        width: 100%;
+        height: 46px;
+        padding: 10px;
+        border: none;
+        font-size: 17px;
+        font-weight: bolder;
+    }
+    .card1{
+        height: 62vh;
+    }
+    .para1{
+        margin-top: 10px;
+    }
+    .upperdiv{
+        display: block;
+        height: 34vh;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .desc{
+        text-align: left;
+        margin-left: 20px;
+    }
+    hr{
+        width: 90%;
+        margin-top: 44px;
+    }
+    .card2{
+        height: 62vh;
+    }
+}
