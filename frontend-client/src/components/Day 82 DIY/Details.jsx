@@ -102,6 +102,11 @@ const Details = () => {
 
         return;
       }
+      //if in case there is no mongodb menu items data.
+       if (!menuData || menuData.length === 0) {
+        console.error('Menu data is empty or undefined');
+        return;
+      }
       const body={
         orders:menuData.map((item,index)=>({
           ...item,
