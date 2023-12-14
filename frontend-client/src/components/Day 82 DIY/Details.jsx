@@ -94,6 +94,14 @@ const Details = () => {
       const stripe = await loadStripe("") //Insert your stripe publish key in loadStripe("") 
       const subtotal=calculateSubtotal();
       
+      // Filter items based on quantity greater than 0
+      const selectedItems= menuData.filter((item,index)=>counters[index]>0);
+      //what happents is that if we have 3 menu items and out of 3 if we only increase quantity of 2 items, then it will post the 3 items quantity with one item as 0 quantity which will give error and stripe allows checkout session for items having quantity more than 1 so stripe will give the error of  StripeInvalidRequestError(rawStripeError):This value must be greater than or equal to 1.So we will first filterout only those data that has qauntity greater than 1 and only those menu items will be posted to the backend stripe checkout session. 
+      if (selectedItems.length === 0) {
+        toast.error(<b>No items selected for payment!</b>);
+
+        return;
+      }
       const body={
         orders:menuData.map((item,index)=>({
           ...item,
