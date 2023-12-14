@@ -7,7 +7,7 @@ import {Stripe} from "stripe";
 
 //in front end we use publishable key and in backend we have to use secret key
 
-const stripe=Stripe("sk_test_51OMoOqSCVIBZdYnz7NSHcQN3Vmwlipx4yDAzAl0pfz3lgXJnWcIAbfHQQlh3SkkfvUWMH2HQlCh3f4bxPyVfg2tB00kEtbkxtu");
+const stripe=Stripe(""); //Insert your stripe secret key in Stripe("")
 
 const app=express();
 
