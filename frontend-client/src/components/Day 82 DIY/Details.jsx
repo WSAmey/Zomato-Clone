@@ -91,7 +91,7 @@ const Details = () => {
 
     const makePayment =async()=>{
       //in front end we use publishable key and in backend we have to use secret key 
-      const stripe = await loadStripe("pk_test_51OMoOqSCVIBZdYnzgQWTktEZGGADuQMXgTjr1iEURbo8QAW2097ykAjfVekVzbPpJ7IzudDVr8Qxnl6guwx4Gme300lVbBCyqp")
+      const stripe = await loadStripe("") //Insert your stripe publish key in loadStripe("") 
       const subtotal=calculateSubtotal();
       
       const body={
