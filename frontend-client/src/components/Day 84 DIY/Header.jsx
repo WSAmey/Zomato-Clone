@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import Modal from 'react-modal';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
@@ -23,6 +23,8 @@ const Header = () => {
   const [loginData, setLoginData]=useState();
   const [isLoggenIn, setLoggedIn]=useState(false);
   const [loggedInUser, setLoggedInUser] =useState(undefined);
+  
+  const navigate=useNavigate();
     // const location=useLocation();
     // const routePath=location.pathname ==='/';
 
@@ -48,7 +50,18 @@ const Header = () => {
       }
     }
 
+    useEffect(()=>{
+          // Check if 'username' exists in localStorage when the component mounts
 
+      const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      // 'username' exists in localStorage, set it to state
+      setLoggedInUser(JSON.parse(storedUsername));
+      setLoggedIn(true);
+    }
+    },[])
+
+    
     
     const change = (e) =>{
       const {name,value}=e.target;
@@ -82,18 +95,26 @@ const Header = () => {
       setLoginData({...loginData,[name]:value});
     }
    
-    const login=(e)=>{
-      e.preventDefault();
-      
-            axios.post('http://localhost:5000/LoginUser',loginData)
-          .then(result=>{
+    const login=async()=>{
+      // e.preventDefault();
+
+            await axios.post('http://localhost:5000/LoginUser',loginData)
+            .then(result=>{
               console.log(result);
               if(result.data.message==="Success"){ //if result is there
                   // navigate("/adminPanel");
-                  toast.success(<b>Login Successful</b>)
-                  setLoggedInUser(result.data.fname+" "+result.data.lname);
+                  // toast.success(<b>Login Successful</b>)
+                  localStorage.setItem('username',JSON.stringify(result.data.fname+" "+result.data.lname))
+                  const uname=JSON.parse(localStorage.getItem('username'));
+                  setLoggedInUser(uname);
+                  // localStorage.setItem('uname', loggedInUser);
+                  // if(loggedInUser){
+
+                    // e.preventDefault();
+                  // }
                   setLoggedIn(true);
                   setLoginModal(false);
+                  window.location.reload();
               }
               else if(result.data==="Invalid credentials"){
                   toast.error(<b>Invalid email or password</b>)
@@ -103,6 +124,7 @@ const Header = () => {
                   toast.error(<b>User does not exist! Please Sign Up</b>)
 
               }
+
           })
           .catch(err=>console.log(err));        
 
@@ -110,12 +132,15 @@ const Header = () => {
 
     
      const handleLogout=()=>{
-      setLoggedIn(false);
-      setLoggedInUser(false);
+       localStorage.removeItem('username')
+       setLoggedIn(false);
+     
+       window.location.reload();
+
      }
 
   return (
-    <div style={{height:"2vh"}}>
+    <div style={{height:"2vh",marginBottom:"7.3vh"}}>
 
     <div style={{display:"grid", gridTemplateColumns:"auto auto",justifyContent:"space-between",backgroundColor: "red",paddingTop:"10px",paddingBottom:"0"}}>
         <div style={{marginLeft:"2vw",paddingTop:"1vh",paddingBottom:"2vh"}}>
@@ -157,18 +182,24 @@ const Header = () => {
           <hr style={{width:"11vw"}}/>
           </div>
 
-          <div style={{ marginLeft:"6vw"}}>
+          
           
           <GoogleOAuthProvider clientId="262409121808-ce55fvtpivlqaeqd6f49ctau5p31s0qo.apps.googleusercontent.com" >
-          <div style={{ width : "200px"}}>
         <GoogleLogin 
-            size='large'
-            width="200px"
+            size='medium'
+            width="380px"
           onSuccess={credentialResponse => {
             const decoded = jwtDecode(credentialResponse.credential);
-            // console.log(decoded)
-            // console.log(decoded.name)
-            setLoggedInUser(decoded.name);
+            console.log(decoded);
+            localStorage.setItem('username',JSON.stringify(decoded.name))
+            
+            
+            // console.log(decoded.image)
+            const user=JSON.parse(localStorage.getItem('username'));
+            
+               window.location.reload();
+            
+            setLoggedInUser(user);
             setLoggedIn(true);
             setLoginModal(false);
 
@@ -178,11 +209,10 @@ const Header = () => {
           }}
 
         />
-        </div>
         </GoogleOAuthProvider>
           </div>
            
-        </div>
+        
       </Modal>
 
       <Modal
